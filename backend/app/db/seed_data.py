@@ -31,6 +31,9 @@ SEED_DATA = {
                 "avg_rent_min": 3200,
                 "avg_rent_max": 3800,
                 "family_score": 85,
+                "walkability_score": 75,
+                "latitude": 24.4500,
+                "longitude": 54.3700,
             },
             {
                 "name": "Hamdan Street",
@@ -39,6 +42,9 @@ SEED_DATA = {
                 "avg_rent_min": 3800,
                 "avg_rent_max": 4600,
                 "walkability_score": 90,
+                "family_score": 65,
+                "latitude": 24.4620,
+                "longitude": 54.3670,
             },
             {
                 "name": "Khalidiya",
@@ -47,6 +53,9 @@ SEED_DATA = {
                 "avg_rent_min": 3400,
                 "avg_rent_max": 4200,
                 "walkability_score": 80,
+                "family_score": 70,
+                "latitude": 24.4300,
+                "longitude": 54.3800,
             },
             {
                 "name": "Al Reem Island",
@@ -55,6 +64,9 @@ SEED_DATA = {
                 "avg_rent_min": 5000,
                 "avg_rent_max": 6000,
                 "nightlife_score": 75,
+                "walkability_score": 85,
+                "latitude": 24.4956,
+                "longitude": 54.3939,
             },
             {
                 "name": "Tourist Club Area",
@@ -63,6 +75,9 @@ SEED_DATA = {
                 "avg_rent_min": 3600,
                 "avg_rent_max": 4400,
                 "family_score": 80,
+                "walkability_score": 88,
+                "latitude": 24.4800,
+                "longitude": 54.3600,
             },
             {
                 "name": "Electra Street",
@@ -71,6 +86,9 @@ SEED_DATA = {
                 "avg_rent_min": 3500,
                 "avg_rent_max": 4300,
                 "walkability_score": 85,
+                "family_score": 72,
+                "latitude": 24.4500,
+                "longitude": 54.3600,
             },
             {
                 "name": "Muroor",
@@ -79,6 +97,9 @@ SEED_DATA = {
                 "avg_rent_min": 2900,
                 "avg_rent_max": 3500,
                 "family_score": 75,
+                "walkability_score": 70,
+                "latitude": 24.4000,
+                "longitude": 54.3500,
             },
             {
                 "name": "Al Nahyan",
@@ -87,6 +108,9 @@ SEED_DATA = {
                 "avg_rent_min": 2800,
                 "avg_rent_max": 3400,
                 "family_score": 88,
+                "walkability_score": 72,
+                "latitude": 24.3800,
+                "longitude": 54.3500,
             },
         ]
     },

@@ -4,10 +4,11 @@ Main API v1 router.
 
 from fastapi import APIRouter
 
-from app.api.v1.endpoints import health, cities
+from app.api.v1.endpoints import health, cities, recommendations
 
 api_router = APIRouter()
 
 # Include endpoint routers
 api_router.include_router(health.router, prefix="/health")
 api_router.include_router(cities.router, prefix="/cities")
+api_router.include_router(recommendations.router, prefix="/recommendations")
