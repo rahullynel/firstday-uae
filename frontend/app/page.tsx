@@ -6,35 +6,36 @@ export default function Home() {
       {/* Hero Section */}
       <section className="section bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in pt-8">
-              <h1 className="mb-8">
-                Your Relocation Journey Starts Here
-              </h1>
-              <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-lg">
-                Find the perfect neighborhood, understand your costs, choose the best bank, and settle into Abu Dhabi with confidence.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="btn-primary">
-                  Explore Now
-                </button>
-                <button className="btn-secondary">
-                  Learn More
-                </button>
-              </div>
-              <div className="flex gap-6 text-sm text-slate-500">
-                <div>✓ Free</div>
-                <div>✓ Data-driven</div>
-                <div>✓ Trusted</div>
-              </div>
+          <div className="max-w-3xl mx-auto text-center animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+              Your first week in the UAE, made simpler.
+            </h1>
+            <p className="text-lg md:text-xl text-slate-600 mb-12 leading-relaxed max-w-2xl mx-auto">
+              Free, open-source tools to help you find neighborhoods, estimate costs, understand banking options, and plan your relocation with confidence.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <button className="btn-primary">
+                Explore Tools
+              </button>
+              <a
+                href="https://github.com/rdsouza/firstday-uae"
+                className="btn-secondary"
+              >
+                View on GitHub
+              </a>
             </div>
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-sm aspect-square bg-gradient-to-br from-blue-400 to-cyan-400 rounded-3xl shadow-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-opacity-10 bg-white flex items-center justify-center">
-                  <svg className="w-40 h-40 text-white opacity-40" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5M10.5 1.5v5h5M10.5 1.5H9.25A1.25 1.25 0 008 2.75v3.5A1.25 1.25 0 009.25 7.5h1.25" />
-                  </svg>
-                </div>
+            <div className="flex flex-wrap gap-8 justify-center text-sm text-slate-600 max-w-xl mx-auto">
+              <div className="flex items-center gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>100% Free</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Open Source</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Built by Relocators</span>
               </div>
             </div>
           </div>
@@ -44,41 +45,47 @@ export default function Home() {
       {/* Features Section */}
       <section id="features" className="section bg-white">
         <div className="container-custom">
-          <div className="section-title text-center">
-            <h2 className="mb-6">Everything You Need</h2>
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              Four Essential Tools
+            </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Comprehensive tools for expats relocating to Abu Dhabi
+              Everything you need to settle into Abu Dhabi confidently
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: '🏘️',
-                title: 'Neighborhoods',
-                description: 'Find communities that match your lifestyle and budget',
+                title: 'Neighborhood Finder',
+                description: 'Discover neighborhoods that match your lifestyle and budget. Compare affordability, commute times, and walkability.',
               },
               {
                 icon: '💰',
-                title: 'Cost Estimator',
-                description: 'Understand your monthly living expenses',
+                title: 'Cost Calculator',
+                description: 'Calculate your monthly expenses based on lifestyle choices. Understand your budget before you move.',
               },
               {
                 icon: '🏦',
                 title: 'Bank Advisor',
-                description: 'Personalized banking recommendations',
+                description: 'Get personalized bank recommendations. Compare accounts, salaries requirements, and features.',
               },
               {
                 icon: '✅',
-                title: 'Checklist',
-                description: 'Your relocation roadmap to success',
+                title: 'Moving Checklist',
+                description: 'Stay organized with a comprehensive checklist. Actions grouped by timeline from day 1 to settling in.',
               },
             ].map((feature, idx) => (
               <div key={idx} className="card">
                 <div className="card-body">
-                  <div className="text-4xl mb-3">{feature.icon}</div>
-                  <h3 className="card-title">{feature.title}</h3>
-                  <p className="card-text text-sm">{feature.description}</p>
+                  <div className="text-5xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -89,10 +96,12 @@ export default function Home() {
       {/* How It Works Section */}
       <section id="how-it-works" className="section bg-slate-50">
         <div className="container-custom">
-          <div className="section-title text-center">
-            <h2 className="mb-6">How It Works</h2>
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              How It Works
+            </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Three simple steps to your perfect move
+              Get started in three simple steps
             </p>
           </div>
 
@@ -100,108 +109,78 @@ export default function Home() {
             {[
               {
                 step: '1',
-                title: 'Tell Us Your Details',
-                description: 'Share your lifestyle, budget, and work location',
+                title: 'Choose Your Tool',
+                description: 'Select the tool that matches your immediate need—neighborhoods, budgets, banking, or moving checklist.',
               },
               {
                 step: '2',
-                title: 'Get Recommendations',
-                description: 'Receive personalized suggestions for your needs',
+                title: 'Input Your Preferences',
+                description: 'Share relevant details like lifestyle, salary range, or timeline. All info stays on your device.',
               },
               {
                 step: '3',
-                title: 'Start Moving',
-                description: 'Use our tools and checklist every step of the way',
+                title: 'Get Your Results',
+                description: 'Receive personalized recommendations, calculations, and plans tailored to your situation.',
               },
             ].map((item, idx) => (
-              <div key={idx} className="relative">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white flex items-center justify-center font-bold text-2xl mb-6">
+              <div key={idx} className="text-center">
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white flex items-center justify-center font-bold text-2xl">
                     {item.step}
                   </div>
-                  <h3 className="text-2xl font-semibold text-center mb-3">{item.title}</h3>
-                  <p className="text-slate-600 text-center">{item.description}</p>
                 </div>
+                <h3 className="text-2xl font-semibold text-slate-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="section bg-white">
-        <div className="container-custom">
-          <div className="section-title text-center">
-            <h2 className="mb-6">Our Key Features</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Data-driven tools to support your relocation
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-16">
-            {[
-              {
-                title: 'Neighborhood Recommendations',
-                description:
-                  'Discover neighborhoods that align with your lifestyle and budget. Our algorithm scores for affordability, commute, amenities, and walkability.',
-                features: [
-                  'Affordability scoring',
-                  'Commute analysis',
-                  'Lifestyle matching',
-                  'Walkability ratings',
-                ],
-              },
-              {
-                title: 'Cost Estimation',
-                description:
-                  'Plan your budget confidently with detailed expense breakdowns for housing, utilities, dining, and transport.',
-                features: [
-                  'Housing costs',
-                  'Utility estimates',
-                  'Dining budgets',
-                  'Transportation',
-                ],
-              },
-            ].map((service, idx) => (
-              <div key={idx} className="card">
-                <div className="card-body">
-                  <h3 className="card-title mb-4">{service.title}</h3>
-                  <p className="card-text mb-8">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, featureIdx) => (
-                      <li key={featureIdx} className="flex items-center gap-3">
-                        <span className="text-green-500 text-lg">✓</span>
-                        <span className="text-slate-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Section */}
+      {/* Why Choose Section */}
       <section className="section bg-white">
-        <div className="container-custom text-center">
-          <h2 className="mb-16">Trusted by Relocators</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-16">
-            {[
-              { label: 'City', value: '1' },
-              { label: 'Neighborhoods', value: '8' },
-              { label: 'Banks', value: '4' },
-              { label: 'Checklist Items', value: '12' },
-              { label: 'Users', value: '1000+' },
-              { label: 'Relocations', value: '500+' },
-            ].map((stat, idx) => (
-              <div key={idx}>
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-3">
-                  {stat.value}
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                Why Choose FirstDay UAE?
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: 'Built for Relocators',
+                  description: 'Created by people who moved to Abu Dhabi. We understand the challenges and information you need.',
+                },
+                {
+                  title: 'No Hidden Costs',
+                  description: 'Everything is free. No premium features, no paywalls, no email capture. Just helpful tools.',
+                },
+                {
+                  title: 'Community-Driven',
+                  description: 'Open source and transparent. Contribute improvements, report issues, or customize for your needs.',
+                },
+                {
+                  title: 'Privacy First',
+                  description: 'Your data never leaves your device. All calculations happen locally. Complete transparency.',
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="card">
+                  <div className="card-body">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-slate-600">{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -209,16 +188,15 @@ export default function Home() {
       {/* CTA Section */}
       <section className="section bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-white mb-6">Ready to Begin?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready for Your Move?
+          </h2>
           <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-10">
-            Join thousands already using FirstDay UAE for their relocation.
+            Start using our free tools today. No signup. No credit card. Just real help for your relocation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-blue-600 hover:bg-slate-100 font-semibold px-8 py-3 rounded-lg transition-all">
-              Get Started
-            </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold px-8 py-3 rounded-lg transition-all">
-              Learn More
+              Explore All Tools
             </button>
           </div>
         </div>

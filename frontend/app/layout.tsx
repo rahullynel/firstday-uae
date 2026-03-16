@@ -4,13 +4,13 @@ import { Footer } from '@/components/footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'FirstDay UAE - Relocation Intelligence for Abu Dhabi',
-  description: 'Your comprehensive relocation platform for moving to Abu Dhabi. Get neighborhood recommendations, cost estimates, bank advice, and a relocation checklist.',
-  keywords: ['Abu Dhabi', 'relocation', 'expat', 'moving', 'UAE', 'neighborhood', 'cost calculator'],
+  title: 'FirstDay UAE - Free Relocation Tools for Abu Dhabi',
+  description: 'Free, open-source tools to help you relocate to Abu Dhabi. Find neighborhoods, calculate costs, get bank recommendations, and plan your move.',
+  keywords: ['Abu Dhabi', 'UAE', 'relocation', 'expat', 'moving', 'free tools', 'open source'],
   authors: [{ name: 'FirstDay UAE' }],
   openGraph: {
-    title: 'FirstDay UAE - Relocation Intelligence',
-    description: 'Your comprehensive relocation platform for moving to Abu Dhabi.',
+    title: 'FirstDay UAE - Free Relocation Tools',
+    description: 'Free, open-source tools to help you relocate to Abu Dhabi.',
     type: 'website',
     locale: 'en_AE',
     url: 'https://firstday-uae.com',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'FirstDay UAE',
-    description: 'Relocation intelligence for Abu Dhabi',
+    description: 'Free tools for relocating to Abu Dhabi',
   },
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-slate-50">
+      <body className="flex flex-col min-h-screen bg-white">
         <Navbar />
         <main className="flex-1">
           {children}
