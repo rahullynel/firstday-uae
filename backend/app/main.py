@@ -16,6 +16,8 @@ async def lifespan(app: FastAPI):
     """Application lifespan context manager."""
     # Startup
     print("🚀 FirstDay UAE Backend Starting...")
+    from app.db import init_db
+    init_db()
     yield
     # Shutdown
     print("🛑 FirstDay UAE Backend Shutting Down...")

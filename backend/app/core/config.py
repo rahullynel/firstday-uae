@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     DEBUG: bool = False
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/firstday_uae"
+    DATABASE_URL: str = "sqlite:///./firstday_uae.db"
     
     # CORS
     CORS_ORIGINS: list[str] = [
