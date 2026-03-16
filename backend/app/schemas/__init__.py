@@ -39,7 +39,6 @@ from app.schemas.recommendation import (
 from app.schemas.cost_estimate import (
     CostEstimateRequest,
     CostBreakdown,
-    LocationCostEstimate,
     CostEstimateResponse,
 )
 from app.schemas.bank_recommendation import (
@@ -84,7 +83,6 @@ __all__ = [
     # Cost Estimate
     "CostEstimateRequest",
     "CostBreakdown",
-    "LocationCostEstimate",
     "CostEstimateResponse",
     # Bank Recommendation
     "BankRecommendationRequest",

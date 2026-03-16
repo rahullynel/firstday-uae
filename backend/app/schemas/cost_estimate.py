@@ -1,5 +1,5 @@
 """
-Cost estimate request/response schemas.
+Cost estimation request/response schemas.
 """
 
 from typing import Optional
@@ -7,74 +7,98 @@ from pydantic import BaseModel, Field
 
 
 class CostEstimateRequest(BaseModel):
-    """Request schema for cost of living estimates."""
+    """Request schema for cost-of-living estimates."""
 
-    city_id: int = Field(..., description="City ID")
-    neighborhood_ids: Optional[list[int]] = Field(None, description="Optional: specific neighborhoods to estimate")
+    city_slug: str = Field(..., min_length=1, max_length=100, description="City slug (e.g., 'abu-dhabi')")
     monthly_salary: float = Field(..., gt=0, description="Monthly salary in AED")
-    family_size: Optional[int] = Field(None, ge=1, le=10, description="Number of people in household")
-    lifestyle: Optional[str] = Field(None, max_length=50, description="e.g., 'budget', 'comfortable', 'luxury'")
+    lifestyle: str = Field(
+        default="balanced",
+        description="Lifestyle preference: 'budget', 'balanced', or 'premium'",
+        pattern="^(budget|balanced|premium)$"
+    )
+    transport_preference: str = Field(
+        default="car",
+        description="Transport mode: 'walk', 'public', or 'car'",
+        pattern="^(walk|public|car)$"
+    )
+    neighborhood_slug: Optional[str] = Field(
+        None,
+        max_length=100,
+        description="Optional neighborhood slug for specific neighborhood rent"
+    )
 
     class Config:
         json_schema_extra = {
             "example": {
-                "city_id": 1,
+                "city_slug": "abu-dhabi",
                 "monthly_salary": 15000,
-                "family_size": 4,
-                "lifestyle": "comfortable",
+                "lifestyle": "balanced",
+                "transport_preference": "car",
+                "neighborhood_slug": "hamdan-street",
             }
         }
 
 
 class CostBreakdown(BaseModel):
-    """Detailed cost breakdown for a location."""
+    """Detailed breakdown of monthly costs."""
 
-    category: str
-    estimated_cost: float = Field(..., ge=0, description="Estimated monthly cost in AED")
-    percentage_of_salary: float = Field(..., ge=0, le=100, description="Percentage of salary")
-    notes: Optional[str] = None
-
-
-class LocationCostEstimate(BaseModel):
-    """Cost estimate for a specific location."""
-
-    city_id: int
-    city_name: str
-    neighborhood_id: Optional[int] = None
-    neighborhood_name: Optional[str] = None
-    monthly_rent: float = Field(..., ge=0, description="Estimated monthly rent in AED")
-    monthly_expenses: float = Field(..., ge=0, description="Estimated monthly other expenses")
-    total_monthly_cost: float = Field(..., ge=0, description="Total monthly cost")
-    salary_remaining: float = Field(..., description="Monthly salary after living costs")
-    affordability: str = Field(..., description="'affordable', 'moderate', 'tight' or 'unaffordable'")
-    breakdown: list[CostBreakdown] = []
-
-
-class CostEstimateResponse(BaseModel):
-    """Response schema for cost estimates."""
-
-    salary_input: float
-    estimates: list[LocationCostEstimate] = []
-    recommendations: list[str] = []
-    summary: str = Field(..., description="Human-readable summary of costs")
+    estimated_rent: float = Field(..., ge=0, description="Monthly rent in AED")
+    estimated_groceries: float = Field(..., ge=0, description="Monthly groceries in AED")
+    estimated_transport: float = Field(..., ge=0, description="Monthly transport in AED")
+    estimated_utilities: float = Field(..., ge=0, description="Monthly utilities in AED")
+    estimated_dining: float = Field(..., ge=0, description="Monthly dining/eating out in AED")
+    estimated_miscellaneous: float = Field(..., ge=0, description="Monthly miscellaneous in AED")
+    estimated_total_monthly_cost: float = Field(..., ge=0, description="Total monthly expenses in AED")
 
     class Config:
         json_schema_extra = {
             "example": {
-                "salary_input": 15000,
-                "estimates": [
-                    {
-                        "city_id": 1,
-                        "city_name": "Abu Dhabi",
-                        "neighborhood_name": "Downtown",
-                        "monthly_rent": 2500,
-                        "monthly_expenses": 2000,
-                        "total_monthly_cost": 4500,
-                        "salary_remaining": 10500,
-                        "affordability": "affordable",
-                    }
-                ],
-                "recommendations": ["Community", "Downtown area is affordable"],
-                "summary": "You can comfortably afford living in Abu Dhabi",
+                "estimated_rent": 4000.0,
+                "estimated_groceries": 1200.0,
+                "estimated_transport": 450.0,
+                "estimated_utilities": 520.0,
+                "estimated_dining": 1200.0,
+                "estimated_miscellaneous": 500.0,
+                "estimated_total_monthly_cost": 7870.0,
+            }
+        }
+
+
+class CostEstimateResponse(BaseModel):
+    """Response schema for cost-of-living estimates."""
+
+    city_slug: str
+    neighborhood_slug: Optional[str] = None
+    monthly_salary: float
+    lifestyle: str
+    transport_preference: str
+
+    cost_breakdown: CostBreakdown
+    estimated_savings: float = Field(..., description="Monthly savings (salary - total cost)")
+    savings_percentage: float = Field(..., description="Savings as percentage of salary (can be negative)")
+    comfort_score: float = Field(..., ge=0, le=100, description="Comfort score based on savings (0-100)")
+    explanation: str = Field(..., description="Human-readable explanation of the estimate")
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "city_slug": "abu-dhabi",
+                "neighborhood_slug": "hamdan-street",
+                "monthly_salary": 15000.0,
+                "lifestyle": "balanced",
+                "transport_preference": "car",
+                "cost_breakdown": {
+                    "estimated_rent": 4200.0,
+                    "estimated_groceries": 1200.0,
+                    "estimated_transport": 500.0,
+                    "estimated_utilities": 520.0,
+                    "estimated_dining": 1200.0,
+                    "estimated_miscellaneous": 600.0,
+                    "estimated_total_monthly_cost": 8220.0,
+                },
+                "estimated_savings": 6780.0,
+                "savings_percentage": 45.2,
+                "comfort_score": 90.4,
+                "explanation": "With a 45.2% savings rate, you can comfortably afford this lifestyle in Hamdan Street. You'll have ₱6,780/month for emergencies and investments.",
             }
         }
