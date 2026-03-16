@@ -27,6 +27,10 @@ from app.schemas.checklist import (
     RelocationChecklistItemBase,
     RelocationChecklistItemCreate,
     RelocationChecklistItemRead,
+    ChecklistItem,
+    ChecklistGroup,
+    ChecklistRequest,
+    ChecklistResponse,
 )
 from app.schemas.cost_index import CostIndexBase, CostIndexCreate, CostIndexRead, CostIndexSummary
 
@@ -71,6 +75,10 @@ __all__ = [
     "RelocationChecklistItemBase",
     "RelocationChecklistItemCreate",
     "RelocationChecklistItemRead",
+    "ChecklistItem",
+    "ChecklistGroup",
+    "ChecklistRequest",
+    "ChecklistResponse",
     # Cost Index
     "CostIndexBase",
     "CostIndexCreate",

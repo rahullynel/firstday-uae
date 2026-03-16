@@ -1,9 +1,9 @@
 """
-RelocationChecklistItem schema.
+Relocation checklist API schemas.
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, Field
 
 
@@ -32,3 +32,39 @@ class RelocationChecklistItemRead(RelocationChecklistItemBase):
 
     class Config:
         from_attributes = True
+
+
+class ChecklistItem(BaseModel):
+    """Checklist item for API response."""
+
+    id: int
+    title: str
+    description: Optional[str]
+    category: str
+    day_order: int
+    official_link: Optional[str]
+
+    class Config:
+        from_attributes = True
+
+
+class ChecklistGroup(BaseModel):
+    """Grouped checklist items by time period."""
+
+    period: str  # "Day 1-3", "Week 1", "After settling in"
+    items: List[ChecklistItem]
+
+
+class ChecklistRequest(BaseModel):
+    """Request to fetch relocation checklist."""
+
+    city_slug: Optional[str] = Field(None, description="Optionally filter by city slug")
+
+
+class ChecklistResponse(BaseModel):
+    """Response containing grouped checklist items."""
+
+    city_name: Optional[str]
+    city_slug: Optional[str]
+    total_items: int
+    groups: List[ChecklistGroup]
