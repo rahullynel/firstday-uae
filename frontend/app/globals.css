@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,6 +14,7 @@
   --surface: 255 255 255; /* white */
   --text-primary: 15 23 42; /* slate-900 */
   --text-secondary: 71 85 105; /* slate-600 */
+  --text-tertiary: 100 116 139; /* slate-500 */
   --border: 226 232 240; /* slate-200 */
   --success: 34 197 94; /* green-500 */
   --warning: 251 146 60; /* orange-500 */
@@ -26,9 +29,11 @@
 
   body {
     @apply bg-[rgb(var(--background))] text-[rgb(var(--text-primary))] antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   a {
@@ -37,27 +42,40 @@
 
   button {
     @apply transition-all duration-200 ease-in-out;
+    font-family: 'Geist', inherit;
   }
 
-  /* Headings */
+  /* Headings with better spacing and hierarchy */
   h1 {
-    @apply text-4xl md:text-5xl font-bold tracking-tight;
+    @apply text-5xl md:text-6xl font-bold tracking-tight mb-4 leading-tight;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
+    @apply text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight;
+    font-weight: 700;
+    letter-spacing: -0.015em;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-bold;
+    @apply text-2xl md:text-3xl font-semibold mb-3 leading-snug;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-semibold;
+    @apply text-lg md:text-xl font-semibold mb-2;
+    font-weight: 600;
   }
 
   p {
-    @apply leading-relaxed text-[rgb(var(--text-secondary))];
+    @apply leading-relaxed text-[rgb(var(--text-secondary))] mb-4;
+    font-size: 1.0625rem;
+  }
+
+  small {
+    @apply text-sm text-[rgb(var(--text-tertiary))];
   }
 }
 
@@ -70,37 +88,45 @@
 
   /* Buttons */
   .btn-primary {
-    @apply px-4 py-2 md:px-6 md:py-3 bg-[rgb(var(--primary))] text-white font-medium rounded-lg hover:bg-[rgb(var(--primary-dark))] disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-5 py-3 md:px-8 md:py-4 bg-[rgb(var(--primary))] text-white font-semibold rounded-lg hover:bg-[rgb(var(--primary-dark))] disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg transition-all;
+    font-family: 'Geist', inherit;
+    letter-spacing: 0.025em;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 md:px-6 md:py-3 bg-[rgb(var(--border))] text-[rgb(var(--text-primary))] font-medium rounded-lg hover:bg-[rgb(226_232_240_/0.8)] disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-5 py-3 md:px-8 md:py-4 bg-[rgb(var(--border))] text-[rgb(var(--text-primary))] font-semibold rounded-lg hover:bg-[rgb(220_224_231)] disabled:opacity-50 disabled:cursor-not-allowed transition-all;
+    font-family: 'Geist', inherit;
+    letter-spacing: 0.025em;
   }
 
   .btn-ghost {
-    @apply px-4 py-2 md:px-6 md:py-3 text-[rgb(var(--primary))] font-medium hover:bg-[rgb(var(--primary)/0.1)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-5 py-3 md:px-8 md:py-4 text-[rgb(var(--primary))] font-semibold hover:bg-[rgb(var(--primary)/0.08)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all;
+    font-family: 'Geist', inherit;
+    letter-spacing: 0.025em;
   }
 
   /* Cards */
   .card {
-    @apply bg-[rgb(var(--surface))] rounded-xl border border-[rgb(var(--border))] shadow-sm hover:shadow-md transition-shadow;
+    @apply bg-[rgb(var(--surface))] rounded-2xl border border-[rgb(var(--border))] shadow-sm hover:shadow-lg transition-all duration-300;
   }
 
   .card-body {
-    @apply p-6;
+    @apply p-7 md:p-8;
   }
 
   .card-title {
-    @apply text-xl font-semibold mb-2;
+    @apply text-xl md:text-2xl font-semibold mb-3 text-[rgb(var(--text-primary))];
+    letter-spacing: -0.01em;
   }
 
   .card-text {
-    @apply text-[rgb(var(--text-secondary))];
+    @apply text-[rgb(var(--text-secondary))] leading-relaxed text-base;
   }
 
   /* Badges */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold;
+    letter-spacing: 0.05em;
   }
 
   .badge-blue {
@@ -121,16 +147,17 @@
 
   /* Forms */
   .input-base {
-    @apply w-full px-4 py-2 border border-[rgb(var(--border))] rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgb(var(--primary))] focus:border-transparent transition-all;
+    @apply w-full px-4 py-3 border border-[rgb(var(--border))] rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgb(var(--primary))] focus:border-transparent transition-all font-medium;
+    font-family: 'Geist', inherit;
   }
 
   /* Section spacing */
   .section {
-    @apply py-12 md:py-16 lg:py-20;
+    @apply py-16 md:py-24 lg:py-32;
   }
 
   .section-title {
-    @apply mb-8 md:mb-12;
+    @apply mb-12 md:mb-16 lg:mb-20;
   }
 
   /* Gradients */
@@ -142,7 +169,7 @@
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;
